@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  railData=()=>{
+    return this.http.get("https://mocki.io/v1/1b278478-78f3-4b6e-bc6a-4c1281c9a414")
+  }
 }
