@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-viewall',
@@ -7,14 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewallComponent implements OnInit {
 
-  constructor() { }
-
-  name="Saranya"
-
-  readValues=()=>{
-    this.name="Raju"
+  constructor(private myapi:ApiService) { 
+    this.fetchData()
   }
 
+  fetchData=()=>{
+    this.myapi.railData().subscribe(
+      (data)=>{
+        this.viewRails=data
+      }
+    )
+  }
+
+  viewRails:any=[]
   ngOnInit(): void {
   }
 
